@@ -1,11 +1,9 @@
 from conexion import ConexionDB
 from modelo_usuario import Usuario
-from productos_pk import menu_productos
 # Funcion para crear un usuario
 def crear_usuario():
     
     # Ingreso de datos por el usuario.
-    
     cod_usuario=int(input("Ingrese el código del nuevo usuario: "))
     username=input("Ingrese el nombre con el cuál ingresará al sistema: ")
     nombre_usur=input("Ingrese el nombre: ")
@@ -15,7 +13,6 @@ def crear_usuario():
     usuario=Usuario(cod_usuario,username,nombre_usur,apellido_usur,dni_usur,password_usur)
     
     # Carga de usuario en la base de datos
-    
     db=ConexionDB("practico_evaluativo.db")
     request=f"insert into USUARIOS values({usuario.cod_usuario},'{usuario.username}','{usuario.nombre_usur}','{usuario.apellido_usur}',{usuario.dni_usur},'{usuario.password_usur}')"
     db.request(request)
@@ -33,10 +30,15 @@ def eliminar_usuario():
 # Funcion para verificar el usuario y contraseña en la base de datos
 def verificar_usuario(username,password):
     db = ConexionDB("practico_evaluativo.db")
-    request = f"SELECT * FROM USUARIOS WHERE username = '{username}'"
+    request = f"SELECT password_usur FROM USUARIOS WHERE username = '{username}'"
     db.request(request)
     original = db.cursor.fetchone()
-    if original.password == password:
-        ventana.quit
-        menu_productos()
-    db.db_close()
+    for fila in original:
+        original_pass = fila
+    if original_pass == None:
+        return False
+    else:
+        if original_pass == password:
+            return True
+        else:
+            return False
