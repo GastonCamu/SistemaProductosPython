@@ -101,7 +101,7 @@ def menu_productos():
     btn_borrar.config(width=20, height=4)
     btn_borrar.grid(row=3)
 
-    btn_salir = Button(framePrincipal, text="Salir", command=ventana.quit)
+    btn_salir = Button(framePrincipal, text="Salir", command=ventana.destroy)
     btn_salir.config(width=20)
     btn_salir.grid(row=4)
 

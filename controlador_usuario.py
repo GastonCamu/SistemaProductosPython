@@ -33,11 +33,11 @@ def verificar_usuario(username,password):
     request = f"SELECT password_usur FROM USUARIOS WHERE username = '{username}'"
     db.request(request)
     original = db.cursor.fetchone()
-    for fila in original:
-        original_pass = fila
-    if original_pass == None:
+    if original == None:
         return False
     else:
+        for fila in original:
+            original_pass = fila
         if original_pass == password:
             return True
         else:
