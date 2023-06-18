@@ -1,15 +1,7 @@
 from conexion import ConexionDB
 from modelo_usuario import Usuario
 # Funcion para crear un usuario
-def crear_usuario():
-    
-    # Ingreso de datos por el usuario.
-    cod_usuario=int(input("Ingrese el código del nuevo usuario: "))
-    username=input("Ingrese el nombre con el cuál ingresará al sistema: ")
-    nombre_usur=input("Ingrese el nombre: ")
-    apellido_usur=input("Ingrese el apellido: ")
-    dni_usur=input("Ingrese el número de DNI: ")
-    password_usur=input("Ingrese la contraseña: ")
+def crear_usuario(cod_usuario,username,nombre_usur,apellido_usur,dni_usur,password_usur):
     usuario=Usuario(cod_usuario,username,nombre_usur,apellido_usur,dni_usur,password_usur)
     
     # Carga de usuario en la base de datos
