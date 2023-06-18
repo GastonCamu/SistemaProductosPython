@@ -31,9 +31,12 @@ def eliminar_usuario():
     db.db_close()
 
 # Funcion para verificar el usuario y contraseña en la base de datos
-def verificar_usuario(username, password):
+def verificar_usuario(username,password):
     db = ConexionDB("practico_evaluativo.db")
-    request = f"SELECT * FROM USUARIOS WHERE username = '{username}' AND password_usur = '{password}'"
+    request = f"SELECT * FROM USUARIOS WHERE username = '{username}'"
     db.request(request)
-    pass_original = db.cursor.fetchone()
+    original = db.cursor.fetchone()
+    if original.password == password:
+        ventana.quit
+        
     db.db_close()
