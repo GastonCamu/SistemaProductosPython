@@ -5,7 +5,6 @@ from modelo_producto import Producto
 def insertar_producto():
     
     # Ingreso de datos por el usuario.
-    
     cod_prod=int(input("Ingrese el código del producto: "))
     descrip_prod=input("Descripción: ")
     cod_marca=int(input("Ingrese el código de la marca: "))
@@ -14,7 +13,6 @@ def insertar_producto():
     producto=Producto(cod_prod,descrip_prod,cod_marca,stock,precio)
     
     # Carga de productos en la base de datos
-    
     db=ConexionDB("practico_evaluativo.db")
     request=f"insert into PRODUCTOS values({producto.cod_prod},'{producto.descrip_prod}',{producto.cod_marca},{producto.stock},{producto.precio})"
     db.request(request)
@@ -25,11 +23,10 @@ def insertar_producto():
 def consultar_productos():
     db=ConexionDB("practico_evaluativo.db")
     request=f"select * from PRODUCTOS"
-    filas_productos = db.cursor.fetchall()
-    for fila in filas_productos:
-        print(fila)
     db.request(request)
+    filas_productos = db.cursor.fetchall()
     db.db_close()
+    return filas_productos
     
 # Funcion para eliminar un producto 
 def eliminar_producto():

@@ -1,6 +1,6 @@
 from conexion import ConexionDB
 from modelo_usuario import Usuario
-
+from productos_pk import menu_productos
 # Funcion para crear un usuario
 def crear_usuario():
     
@@ -38,5 +38,5 @@ def verificar_usuario(username,password):
     original = db.cursor.fetchone()
     if original.password == password:
         ventana.quit
-        
+        menu_productos()
     db.db_close()
