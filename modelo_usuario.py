@@ -1,3 +1,5 @@
+# Creacion de la clase Usuario
+
 class Usuario():
     def __init__(self,cod_usuario, username,nombre_usur,apellido_usur,dni_usur,password_usur):
         self.cod_usuario = cod_usuario

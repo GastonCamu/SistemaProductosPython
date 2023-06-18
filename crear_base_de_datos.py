@@ -1,4 +1,9 @@
 from conexion import ConexionDB
+
+# Creacion de la base de datos
+# Nombre de la base de datos: practico_evaluativo.db
+
+
 conexionDB = ConexionDB("practico_evaluativo.db")
 conexionDB.request("create table MARCAS (cod_marca int(10) not null primary key, descrip_marca varchar(50))")
 conexionDB.request("create table PRODUCTOS (cod_prod int(10) not null primary key, descrip_prod varchar(50), cod_marca int(10), stock int, precio float, foreign key(cod_marca) references MARCAS(cod_marca))")

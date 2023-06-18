@@ -1,4 +1,7 @@
 import sqlite3 as sql
+
+# Creacion de la clase conexionDB
+
 class ConexionDB():
     def __init__(self,database):
         self.connect = sql.connect(database)
