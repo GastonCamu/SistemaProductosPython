@@ -64,7 +64,7 @@ def ventana_login():
 
     # Boton para salir del sistema
     btnSalir=Button(frameLogin,text="Salir")
-    btnSalir.config(width=10,command=ventana.quit)
+    btnSalir.config(width=10,command=ventana.destroy)
     btnSalir.grid(row=2,column=2,pady=10)
 
 

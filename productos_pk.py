@@ -5,7 +5,7 @@ from controlador_producto import *
 import tkinter as tk
 ventanas_abiertas=[]
 
-def i_mostrar_productos():
+def menu_productos():
     # Comando para borrar y ejecutar siguiente ventana
     def comando_compuesto():
         ventana.destroy()
@@ -13,7 +13,7 @@ def i_mostrar_productos():
 
     # Creacion de la ventana Mostrar Productos
     ventana = Tk()
-    ventana.title("Mostrar Productos")
+    ventana.title("Productos")
         
     # Tamaño de la ventana
     ancho_ventana = 800
@@ -62,7 +62,7 @@ def i_mostrar_productos():
     # Comando para borrar y ejecutar siguiente ventana
         def comando_compuesto():
             ventana2.destroy()
-            i_mostrar_productos()
+            menu_productos()
 
         def cargar_datos():
             codigo = entryCod_prod.get()
@@ -163,7 +163,7 @@ def i_mostrar_productos():
                 eliminar_producto(valores[0])
                 tk.messagebox.showinfo("Eliminado", "El producto ha sido eliminado correctamente.")
                 ventana.destroy()
-                i_mostrar_productos()
+                menu_productos()
         else:
             tk.messagebox.showwarning("Seleccionar producto", "Por favor, selecciona un producto de la tabla.")
 
@@ -172,75 +172,15 @@ def i_mostrar_productos():
 
     btn_insertar = Button(framePrincipal, text="Insertar", command=i_insertar_producto)
     btn_insertar.config(width=20)
-    btn_insertar.pack()
+    btn_insertar.pack(padx=42,pady=15,side="left")
     btn_Eliminar = Button(framePrincipal, text="Eliminar", command=i_eliminar_producto)
     btn_Eliminar.config(width=20)
-    btn_Eliminar.pack()
-    btn_salir = Button(framePrincipal, text="Volver", command=comando_compuesto)
+    btn_Eliminar.pack(padx=42,pady=15,side="left")
+    btn_salir = Button(framePrincipal, text="Salir", command=ventana.destroy)
     btn_salir.config(width=20)
-    btn_salir.pack()
+    btn_salir.pack(padx=42,pady=15,side="left")
 
     ventana.mainloop()
 
-
-
-
-
-
-
-def menu_productos():
-    # Comando para borrar y ejecutar siguiente ventana
-        #ventana para mostrar productos alii
-    def comando_compuesto():
-        ventana.destroy()
-        i_mostrar_productos()
-
-
-    # Creacion de la ventana Menu Productos  
-    ventana = Tk()
-    ventana.title("Menu Productos")
-        
-    # Tamaño de la ventana
-    ancho_ventana = 300
-    alto_ventana = 500
-    # Obtener el ancho y alto de la pantalla
-    ancho_pantalla = ventana.winfo_screenwidth()
-    alto_pantalla = ventana.winfo_screenheight()
-    # Calcular las coordenadas para centrar la ventana
-    x = (ancho_pantalla // 2) - (ancho_ventana // 2)
-    y = (alto_pantalla // 2) - (alto_ventana // 2) - 50
-    # Establecer la geometría de la ventana
-    ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{x}+{y}")
-
-    framePrincipal = Frame(ventana)
-    framePrincipal.pack()
-
-    btn_mostrar_t = Button(framePrincipal, text="Mostrar productos", command=comando_compuesto)
-    btn_mostrar_t.config(width=20, height=4)
-    btn_mostrar_t.grid(row=0)
-
-    # btn_insertar = Button(framePrincipal, text="Insertar un producto")
-    # btn_insertar.config(width=20, height=4)
-    # btn_insertar.grid(row=1)
-
-    # btn_modificar = Button(framePrincipal, text="Modificar un producto")
-    # btn_modificar.config(width=20, height=4)
-    # btn_modificar.grid(row=2)
-
-    # btn_borrar = Button(framePrincipal, text="Borrar un producto")
-    # btn_borrar.config(width=20, height=4)
-    # btn_borrar.grid(row=3)
-
-                                    #ESTE BOTÓN DE SALIR NO ESTÁ FUNCIONANDO BIEN... 
-                            #Cuando pongo en registrarme y luego en volver y repito lo mismo varias veces sin necesidad de registrarme en serio
-                            #Me obliga a apretar este botón de salir tantas veces como haya estado haciendo lo del renglón de arriba
-    btn_salir = Button(framePrincipal, text="Salir", command=ventana.destroy())
-    btn_salir.config(width=20)
-    btn_salir.grid(row=4)
-
-    for i in framePrincipal.winfo_children():
-        i.grid_configure(padx=12, pady=12)
-
-    ventana.mainloop()
 
 
