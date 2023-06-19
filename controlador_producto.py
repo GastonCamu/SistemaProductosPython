@@ -21,6 +21,14 @@ def consultar_productos():
     db.db_close()
     return filas_productos
     
+# Funcion para modificar un producto 
+def modificar_producto(cod_prod,descrip_prod,marca,stock,precio):
+    db=ConexionDB("practico_evaluativo.db")
+    request=f"update PRODUCTOS set cod_prod = {cod_prod}, descrip_prod = '{descrip_prod}', marca = '{marca}', stock = {stock}, precio = {precio} where cod_prod = {cod_prod}"
+    db.request(request)
+    db.commit()
+    db.db_close()    
+
 # Funcion para eliminar un producto 
 def eliminar_producto(cod_prod):
     db=ConexionDB("practico_evaluativo.db")
