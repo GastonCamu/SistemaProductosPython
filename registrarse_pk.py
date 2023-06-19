@@ -23,7 +23,8 @@ def ventana_registro():
     frameRegistro=Frame(ventana)
     frameRegistro.pack(padx=30,pady=30)
     def cargar_datos():
-        crear_usuario(5,entryUsername.get(),entryNombre.get(),entryApellido.get(),entryDni.get(),entryPass.get())
+        #AQUI CREAR_USUARIO EMPEZABA CON 5 SETEANDOLE ESE VALOR POR DEFECTO AL COD_USUARIO, A LA PK, ya lo saqué y modifiqué el controlador y el modelo
+        crear_usuario(entryUsername.get(),entryNombre.get(),entryApellido.get(),entryDni.get(),entryPass.get())
         messagebox.showinfo(message="Registro exitoso")
         if messagebox.OK:
             ventana.destroy()
@@ -68,8 +69,8 @@ def ventana_registro():
     btnEnter.config(width=15,command=cargar_datos)
     btnEnter.grid(row=5,column=0,pady=10,padx=40)
 
-    # Boton para salir del sistema
-    btnSalir=Button(frameRegistro,text="Salir")
+    # Boton para regresar a la ventana principal
+    btnSalir=Button(frameRegistro,text="Volver")
     btnSalir.config(width=15,command=ventana.destroy)
     btnSalir.grid(row=5,column=1,pady=10,padx=40)
 

@@ -1,17 +1,17 @@
 from conexion import ConexionDB
 from modelo_usuario import Usuario
 # Funcion para crear un usuario
-def crear_usuario(cod_usuario,username,nombre_usur,apellido_usur,dni_usur,password_usur):
-    usuario=Usuario(cod_usuario,username,nombre_usur,apellido_usur,dni_usur,password_usur)
+def crear_usuario(username,nombre_usur,apellido_usur,dni_usur,password_usur):
+    usuario=Usuario(username,nombre_usur,apellido_usur,dni_usur,password_usur)
     
     # Carga de usuario en la base de datos
     db=ConexionDB("practico_evaluativo.db")
-    request=f"insert into USUARIOS values({usuario.cod_usuario},'{usuario.username}','{usuario.nombre_usur}','{usuario.apellido_usur}',{usuario.dni_usur},'{usuario.password_usur}')"
+    request=f"insert into USUARIOS ('username','nombre_usur','apellido_usur','dni_usur','password_usur') values('{usuario.username}','{usuario.nombre_usur}','{usuario.apellido_usur}',{usuario.dni_usur},'{usuario.password_usur}')"
     db.request(request)
     db.commit()
     db.db_close()
 
-# Funcion para eliminar a un usuario
+# Funcion para eliminar a un usuario        LO VAMOS A HACER A ESTO?????
 def eliminar_usuario():
     db=ConexionDB("practico_evaluativo.db")
     request = f"delete from USUARIOS where dni_usur ='{del_usuario}'"
