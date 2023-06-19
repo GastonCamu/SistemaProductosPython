@@ -3,8 +3,9 @@ from tkinter import messagebox
 from controlador_usuario import verificar_usuario
 from productos_pk import menu_productos
 from registrarse_pk import ventana_registro
+
+# Funcion que ejecuta la ventana del login
 def ventana_login():
-    # Creacion de la ventana login
     ventana=Tk()
     ventana.title("Inicio de Sesion")
 
@@ -23,6 +24,7 @@ def ventana_login():
     frameLogin=Frame(ventana)
     frameLogin.pack(padx=40,pady=40)
 
+    # Funcion que permite cerrar una ventana y abrir el menu a la vez
     def comando_compuesto():
             ventana.destroy()
             menu_productos()
@@ -42,6 +44,7 @@ def ventana_login():
     entryPass.config(show="*")
     entryPass.grid(row=1,column=1)
 
+    # Funcion que sirve para verificar el usuario y reidirigirlo
     def login():
         respuesta = verificar_usuario(entryUser.get(),entryPass.get())
         if respuesta == True:

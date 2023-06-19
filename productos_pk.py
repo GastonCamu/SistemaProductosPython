@@ -5,13 +5,13 @@ from controlador_producto import *
 import tkinter as tk
 ventanas_abiertas=[]
 
+# Ventana del menu de productos
 def menu_productos():
-    # Comando para borrar y ejecutar siguiente ventana
+    # Funcion para cerrar la ventana y abrir el menu de productos a la vez
     def comando_compuesto():
         ventana.destroy()
         menu_productos()
 
-    # Creacion de la ventana Mostrar Productos
     ventana = Tk()
     ventana.title("Productos")
         
@@ -56,14 +56,15 @@ def menu_productos():
 
     tabla.pack()
 
-
+    # Ventana para insertar productos
     def i_insertar_producto():
         ventana.destroy()
-    # Comando para borrar y ejecutar siguiente ventana
+    # Funcion para cerrar la ventana y abrir el menu de productos a la vez
         def comando_compuesto():
             ventana2.destroy()
             menu_productos()
 
+        # Funcion que sirve para cargar los datos de los productos en la bd
         def cargar_datos():
             codigo = entryCod_prod.get()
             descripcion = entryDescrip.get()
@@ -80,10 +81,9 @@ def menu_productos():
             else:
                 messagebox.showwarning(message="Por favor, complete todos los campos")
 
-        # Creación de la ventana2 Insertar Productos
+        # Creación de la ventana2 para Insertar Productos
         ventana2 = Tk()
         ventana2.title("Insertar Productos")
-        
 
         # Tamaño de la ventana2
         ancho_ventana2 = 800
@@ -135,10 +135,12 @@ def menu_productos():
         entryPrecio = Entry(frameInsertar, width=40)
         entryPrecio.grid(row=4, column=1)
 
+        # Boton para cargar los datos
         btn_cargar = Button(frameInsertar, text="Cargar", command=cargar_datos)
         btn_cargar.config(width=20)
         btn_cargar.grid(row=5, columnspan=2, pady=10)
 
+        # Boton para volver al menu de productos
         btn_salir = Button(frameInsertar, text="Volver", command=comando_compuesto)
         btn_salir.config(width=20)
         btn_salir.grid(row=6, columnspan=2, pady=10)
@@ -148,13 +150,15 @@ def menu_productos():
 
         ventana2.mainloop()
 
+    # Ventana para modificar los productos
     def i_modificar_producto(cod_prod,descrip_prod,marca_prod,stock_prod,precio_prod):
         ventana.destroy()
-        # Comando para borrar y ejecutar siguiente ventana
+        # Funcion para cerrar la ventana y abrir a la vez el menu de productos
         def comando_compuesto():
             ventana3.destroy()
             menu_productos()
 
+        # Funcion para cargar los cambios de los productos
         def cargar_datos():
             codigo = cod_prod
             descripcion = entryDescrip.get()
@@ -223,10 +227,12 @@ def menu_productos():
         entryPrecio.insert(0,precio_prod)
         entryPrecio.grid(row=4, column=1)
 
-        btn_cargar = Button(frameModificar, text="Cargar", command=cargar_datos)
+        # Boton para guardar los cambios de los productos
+        btn_cargar = Button(frameModificar, text="Guardar", command=cargar_datos)
         btn_cargar.config(width=20)
         btn_cargar.grid(row=5, columnspan=2, pady=10)
 
+        # Boton para volver al menu de productos
         btn_salir = Button(frameModificar, text="Volver", command=comando_compuesto)
         btn_salir.config(width=20)
         btn_salir.grid(row=6, columnspan=2, pady=10)
@@ -236,6 +242,7 @@ def menu_productos():
 
         ventana3.mainloop()
 
+    # Funcion para seleccionar el producto y transferir los datos a la ventana de modificar productos
     def c_modificar_producto():
         # Obtener el elemento seleccionado en la tabla
         seleccionado = tabla.focus()
@@ -254,6 +261,7 @@ def menu_productos():
         else:
             tk.messagebox.showwarning("Seleccionar producto", "Por favor, selecciona un producto de la tabla.")
 
+    # Ventana para eliminar productos
     def i_eliminar_producto():
         # Obtener el elemento seleccionado en la tabla
         seleccionado = tabla.focus()
@@ -272,16 +280,22 @@ def menu_productos():
         else:
             tk.messagebox.showwarning("Seleccionar producto", "Por favor, selecciona un producto de la tabla.")
 
-
+    # Boton para insertar un producto
     btn_insertar = Button(framePrincipal, text="Insertar", command=i_insertar_producto)
     btn_insertar.config(width=20)
     btn_insertar.pack(padx=12,pady=15,side="left")
+    
+    # Boton para modificar un producto
     btn_Modificar = Button(framePrincipal, text="Modificar", command=c_modificar_producto)
     btn_Modificar.config(width=20)
     btn_Modificar.pack(padx=12,pady=15,side="left")
+    
+    # Boton para eliminar un producto
     btn_Eliminar = Button(framePrincipal, text="Eliminar", command=i_eliminar_producto)
     btn_Eliminar.config(width=20)
     btn_Eliminar.pack(padx=12,pady=15,side="left")
+    
+    # Boton para salir del sistema
     btn_salir = Button(framePrincipal, text="Salir", command=ventana.destroy)
     btn_salir.config(width=20)
     btn_salir.pack(padx=12,pady=15,side="left")

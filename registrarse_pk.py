@@ -2,9 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 from controlador_usuario import crear_usuario
 
+# Ventana para registrarse
 def ventana_registro():
-    
-    # Creacion de la ventana login
     ventana=Tk()
     ventana.title("Registrarse")
 
@@ -22,6 +21,8 @@ def ventana_registro():
 
     frameRegistro=Frame(ventana)
     frameRegistro.pack(padx=30,pady=30)
+    
+    # Funcion para cargar los datos del usuario en la bd
     def cargar_datos():
         #AQUI CREAR_USUARIO EMPEZABA CON 5 SETEANDOLE ESE VALOR POR DEFECTO AL COD_USUARIO, A LA PK, ya lo saqué y modifiqué el controlador y el modelo
         crear_usuario(entryUsername.get(),entryNombre.get(),entryApellido.get(),entryDni.get(),entryPass.get())
